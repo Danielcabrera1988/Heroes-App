@@ -5,7 +5,7 @@ export const DcPages = () => {
     <>
       <h1>DcPages</h1>
       <hr />
-      <HeroList publisher={"DC Comics"} />
+      <HeroList publisher='DC Comics' />
     </>
   );
 };
