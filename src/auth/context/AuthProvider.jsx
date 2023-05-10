@@ -14,15 +14,16 @@ const init = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+
   const [authState, dispatch] = useReducer(authReducer, {}, init);
 
-  const login = async (name = "") => {
+  const login = (name = "") => {
     const user = {
       id: "abc",
-      name: name
+      name
     };
     const action = {
-      types: types.login,
+      type: types.login,
       payload: user
     };
     //solo se pueden guardar Strings dentro del local storage, por eso utiliza el JSON.stringify
@@ -36,7 +37,11 @@ export const AuthProvider = ({ children }) => {
     dispatch(action);
   }
   return (
-    <AuthContext.Provider value={{ ...authState, login, logout }}>
+    <AuthContext.Provider value={{
+      ...authState, 
+      //methods
+      login,
+      logout }}>
       {children}
     </AuthContext.Provider>
   );
